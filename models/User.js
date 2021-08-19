@@ -2,23 +2,22 @@ const { Schema, model } = require('mongoose');
 //const dateFormat = require('../utils/dateFormat');
 
 var validateEmail = function(email) {
-    var regx = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-    return regx.test(email)
+  var regx = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+  return regx.test(email)
 };
-
 
 const UserSchema = new Schema(
   {
-    user: {
+    username: {
       type: String,
-      unique: ture,
+      unique: true,
       required: true,
       trim: true
     },
     email: {
       type: String,
       required: true,
-      unique: ture,
+      unique: true,
       validate: [validateEmail, 'Please fill a valid email address'],
     },
     thoughts: [
@@ -27,12 +26,11 @@ const UserSchema = new Schema(
         ref: 'Thought'
       }
     ],
-    friends: [self]
+    friends: [ this ]
   },
   {
     toJSON: {
       virtuals: true,
-  //     getters: true
     },
     // prevents virtuals from creating duplicate of _id as `id`
     id: false
