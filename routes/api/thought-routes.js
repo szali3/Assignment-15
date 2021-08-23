@@ -20,28 +20,36 @@
 
 // POST to create a reaction stored in a single thought's reactions array field
 
-/*
+
 // DELETE to pull and remove a reaction by the reaction's reactionId value
-
 const router = require('express').Router();
+
 const {
-  addComment,
-  removeComment,
-  addReply,
-  removeReply
-} = require('../../controllers/comment-controller');
+  getAllThoughts,
+  getThoughtById,
+  createThought,
+  updateThought,
+  removeThought,
+  addReaction,
+  deleteReaction
+} = require('../../controllers/thought-controller');
 
-// /api/comments/<pizzaId>
-router.route('/:pizzaId').post(addComment);
-
-// /api/comments/<pizzaId>/<commentId>
+// /api/thoughts
 router
-  .route('/:pizzaId/:commentId')
-  .put(addReply)
-  .delete(removeComment);
+  .route('/')
+  .get(getAllThoughts)
+  .post(createThought);
 
-// /api/comments/<pizzaId>/<commentId>/<replyId>
-router.route('/:pizzaId/:commentId/:replyId').delete(removeReply);
+// /api/thoughts/:id
+router
+  .route('/:id')
+  .get(getThoughtById)
+  .put(updateThought)
+  .delete(removeThought);
 
+// /api/thoughts/:thoughtId/reactions>
+router
+  .route('/:thoughtId/reactions')
+  .post(addReaction)
+  .delete(deleteReaction);
 module.exports = router;
-*/
