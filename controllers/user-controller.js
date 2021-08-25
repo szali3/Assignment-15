@@ -59,7 +59,7 @@ const userController = {
       .then(dbUserData => {
        if (!dbUserData) {
         res.status(404).json({ message: 'No user found with this id!' });
-        return;
+        return ;
       }
 
       // code for bonus here
