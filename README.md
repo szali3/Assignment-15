@@ -1,6 +1,6 @@
 # Social Network API
 
-![Screenshot](social-network-api.png)
+![Screenshot](social-network-api.PNG)
 
 ## Summary  
 
